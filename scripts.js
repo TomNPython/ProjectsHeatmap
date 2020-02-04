@@ -30,8 +30,8 @@ var data = [
     {x: "November Wk 2", y: "Thurs", heat: 500},
     {x: "November Wk 2", y: "Fri", heat: 300},
     {x: "November Wk 3", y: "Mon", heat: 1500},
-    {x: "November Wk 3", y: "Tues", heat: 0},
-    {x: "November Wk 3", y: "Weds", heat: 0},
+    {x: "November Wk 3", y: "Tues", heat: 0, info: "NB: Birthday"},
+    {x: "November Wk 3", y: "Weds", heat: 0, info: "NB: Birthday"},
     {x: "November Wk 3", y: "Thurs", heat: 500},
     {x: "November Wk 3", y: "Fri", heat: 2400},
     {x: "November Wk 4", y: "Mon", heat: 2600},
@@ -67,16 +67,22 @@ var data = [
 
   let colourScale = anychart.scales.ordinalColor();
   colourScale.ranges([
-    {less: 400}, 
+    {less: 0},
+    {from: 1, to: 400}, 
     {from: 401, to: 799},
-    {greater: 800}
+    {from: 800, to: 999},
+    {greater: 1000}
   ])
-  colourScale.colors(['red', 'yellow', 'green'])
+  colourScale.colors(['brown', 'red', 'yellow', 'forestgreen', 'lime'])
 
   chart.colorScale(colourScale)
   
   // set the container id
   chart.container("container");
+
+  chart.tooltip().format("Words: {%heat}\n\n{%info}");
+
   
   // initiate drawing the chart
   chart.draw();
+
