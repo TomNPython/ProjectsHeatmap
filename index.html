@@ -20,6 +20,25 @@
     <div id='container'>
         
     </div>
+    <h3>Gym (classes/week):</h3>
+    <div id="gym"></div>
+    <h3>Create Your Own:</h3>
+    <p>Enter a datapoint to add to the chart. The X-Axis will label the top of your chart, the Y-Axis will label the 
+        left-hand side of your chart, and the Heat will determine the colour of your chart.</p>
+        <p>Add as many data points as you want!:</p>
+    <form id='point-adder'>
+        <label>X-Axis:</label>
+        <input type="text" name="xaxis">
+        <label>Y-Axis:</label>
+        <input type="text" name="yaxis">
+        <label>Heat:</label>
+        <input type="number" name="heatnumber">
+        <button type='submit'>Submit</button>
+    </form>
+    <div id="new-data-points"></div>
+    <p>When you have entered all the data points you want, click 'Create Chart' do display them on your own heatmap below!</p>
+    <button id='create-chart'>Create Chart</button>
+    <div id="newchart"></div>
     <script src='scripts.js'></script>
 </body>
 </html>

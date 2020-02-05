@@ -1,9 +1,17 @@
 body {
-    background-image: url('Silhouette.jpg');
+    background: grey;
     background-size: cover;
     color: white
 }
 
 #container {
     border: 1px solid blue
+}
+
+button {
+    cursor: pointer;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid grey;
+    border-radius: 5px;
 }

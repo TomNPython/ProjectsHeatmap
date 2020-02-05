@@ -1,3 +1,4 @@
+// Writing Data
 var data = [
     {x: "October Wk 1", y: "Mon", heat: 1000},
     {x: "October Wk 1", y: "Tues", heat: 1100},
@@ -86,3 +87,73 @@ var data = [
   // initiate drawing the chart
   chart.draw();
 
+// --- Gym Data
+let gymData = [
+  {x: "October Wk 1", y: "Classes", heat: 2},
+  {x: "October Wk 2", y: "Classes", heat: 2},
+  {x: "October Wk 3", y: "Classes", heat: 3},
+  {x: "October Wk 4", y: "Classes", heat: 2},
+  {x: "November Wk 1", y: "Classes", heat: 3},
+  {x: "November Wk 2", y: "Classes", heat: 4},
+  {x: "November Wk 3", y: "Classes", heat: 4},
+  {x: "November Wk 4", y: "Classes", heat: 5},
+  {x: "December Wk 1", y: "Classes", heat: 4},
+  {x: "December Wk 2", y: "Classes", heat: 3},
+  {x: "December Wk 3", y: "Classes", heat: 2},
+  {x: "December Wk 4", y: "Classes", heat: 2},
+];
+
+let gymChart = anychart.heatMap(gymData)
+
+let gymColour = anychart.scales.linearColor()
+
+gymChart.colorScale(gymColour)
+
+gymChart.container('gym')
+
+gymChart.draw()
+
+// --- New Chart
+let newData = []
+
+const pointAdder = document.getElementById('point-adder')
+const newDataPoints = document.getElementById('new-data-points')
+const chartCreator = document.getElementById('create-chart')
+
+function addData(e) {
+  e.preventDefault()
+
+    let usedData = e.target.elements
+    console.log(usedData[0].value)
+    console.log(usedData)
+    console.log(newDataPoints)
+    newData.push({
+      x: usedData[0].value,
+      y: usedData[1].value,
+      heat: usedData[2].value
+    })
+    if (newDataPoints.innerHTML) { newDataPoints.firstChild.remove() }
+    newDataPoints.append(`${newData.length} ${newData.length > 1 ? ' points added!' : ' point added!'}`)
+    console.log(newData)
+}
+
+function createChart(e) {
+  console.log(newData)
+  e.preventDefault()
+  if (newData.length) {
+  let newChart = anychart.heatMap(newData)
+
+  let newColour = anychart.scales.linearColor()
+  
+  newChart.colorScale(newColour)
+  
+  newChart.container('newchart')
+      newChart.draw() 
+  }
+  else {
+    
+  }
+}
+
+pointAdder.addEventListener('submit', addData)
+chartCreator.addEventListener('click', createChart)
